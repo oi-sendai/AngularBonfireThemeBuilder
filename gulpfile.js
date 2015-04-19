@@ -11,8 +11,8 @@ var themeTemplate = 'default'
 
 // set up default routing for AngularBonfire
 var config = {
-	'templatePath' : './public/themes/'+themeTemplate+'/assets',
-	'modulesPath'  : './application/modules/**/assets'
+	templatePath : './public/themes/'+themeTemplate+'/assets',
+	modulesPath  : './application/modules/**/assets'
 }
 // Require all tasks in gulp/tasks, including subfolders
 // requireDir('gulp/tasks', { recurse: true })
@@ -21,7 +21,9 @@ gulp.task('sass', function() {
 	// gulp.src('./application/modules/**/assets/sass/*.{scss,sass}')
 	gulp.src([config.modulesPath+'/sass/**.*', config.templatePath+'/sass/**.*'])
 	.pipe(plumber())
-	.pipe(sass())
+	.pipe(sass({
+		errLogToConsole: true}
+	))
 	.pipe(prefix('last 2 version', '> 1%', 'ie 8', 'ie 9'))
 	// .pipe(concat('style.css'))
 	.pipe(gulp.dest(config.templatePath + './css'));
@@ -31,7 +33,7 @@ gulp.task('sass', function() {
 gulp.task('watch', function() {
   // Watches the scss folder for all .scss and .sass files
   // If any file changes, run the sass task
-  gulp.watch('./scss/**/*.{scss,sass}', ['sass'])
+  gulp.watch([config.modulesPath+'/sass/**.*', config.templatePath+'/sass/**.*'], ['sass'])
 })
 
 // Creating a default task
