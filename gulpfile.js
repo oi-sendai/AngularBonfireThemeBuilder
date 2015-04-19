@@ -2,11 +2,13 @@ var gulp = require('gulp')
 ,   sass = require('gulp-sass')
 ,   sourcemaps = require('gulp-sourcemaps')
 ,   prefix = require('gulp-autoprefixer')
+,   concat = require('gulp-concat')
 
 gulp.task('sass', function() {
 	gulp.src('./application/modules/**/assets/sass/*.{scss,sass}')
 	.pipe(sass())
 	.pipe(prefix('last 2 version', '> 1%', 'ie 8', 'ie 9'))
+	.pipe(concat('style.css'))
 	.pipe(gulp.dest('./css'));
 })
 
