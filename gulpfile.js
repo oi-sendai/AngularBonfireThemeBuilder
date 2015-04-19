@@ -18,8 +18,8 @@ var config = {
 // requireDir('gulp/tasks', { recurse: true })
 
 gulp.task('sass', function() {
-	// gulp.src('./application/modules/**/assets/sass/*.{scss,sass}')
-	gulp.src([config.modulesPath+'/sass/**.*', config.templatePath+'/sass/**.*'])
+	// accepts an array of paths, with a second argument being an object in which the base path is set
+	gulp.src([config.modulesPath+'/sass/**.*', config.templatePath+'/sass/**.*'], {base: './'})
 	.pipe(plumber())
 	.pipe(sass({
 		errLogToConsole: true}
