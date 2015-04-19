@@ -1,0 +1,45 @@
+#Angular Bonfire Theme Creator
+
+To get started run the following command in the route folder of your CodeIgnitor Bonfire project
+
+```
+bash ./create-theme.sh
+```
+
+The following dependancies are required
+-npm
+-bower
+-gulp
+
+You might also need to run 
+
+```
+npm install -g gulp bower sass
+sudo !!
+```
+
+The program will ask you for the name of your theme and first module, build out the required folder structure.
+
+All you need to do is then include in your header.php file
+```
+<link href="<?php echo base_url(); ?>/css/angular-bonfire.css">
+```
+
+And in footer.php
+```
+<script src="<?php echo js_path(); ?>angular-bonfire.js"></script>
+```
+
+In /application/config/application.php:
+
+```
+$config['template.default_theme'] = 'yourtheme/';
+```
+
+
+##Todo
+-Add native Bonfire: Modernizer support
+-Automatically update /application/config/application.php 
+
+
+
