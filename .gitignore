@@ -1,3 +1,6 @@
-# ignore installed components
-bower_components
+# AngularBonfire ignores
 node_modules
+public/assets/bower_components
+# AngularBonfire includes
+!public/themes/angular-bonfire/*
+!application/modules/yourmodulezxas/yourapp/*

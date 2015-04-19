@@ -1,12 +1,12 @@
 {
-  "name": "gulpbegin",
+  "name": "AngulaBonfireBuild",
   "version": "0.0.0",
   "description": "AngularBonfire build process",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"error: no test specified\" && exit 1\""
+    // "test": 'echo "error: no test specified" && exit 1'
   },
-  "author": "",
+  "author": "Andrew MacKay",
   "license": "BSD-2-Clause",
   "devDependencies": {
     "gulp": "~3.8.11",
