@@ -11,6 +11,3 @@ input {
   -webkit-transform: translate(-100%, 0);
       -ms-transform: translate(-100%, 0);
           transform: translate(-100%, 0); }
-
-.test {
-  height: 10px; }
