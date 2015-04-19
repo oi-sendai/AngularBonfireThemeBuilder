@@ -4,7 +4,7 @@ var gulp = require('gulp')
 ,   prefix = require('gulp-autoprefixer')
 
 gulp.task('sass', function() {
-	gulp.src('./scss/*.{scss,sass}')
+	gulp.src('./application/modules/**/assets/sass/*.{scss,sass}')
 	.pipe(sass())
 	.pipe(prefix('last 2 version', '> 1%', 'ie 8', 'ie 9'))
 	.pipe(gulp.dest('./css'));
