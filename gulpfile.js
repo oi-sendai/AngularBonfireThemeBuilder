@@ -19,15 +19,21 @@ var config = {
 
 gulp.task('sass', function() {
 	// accepts an array of paths, with a second argument being an object in which the base path is set
-	gulp.src([config.modulesPath+'/sass/**.*', config.templatePath+'/sass/**.*'], {base: './'})
+	// currently set to include all files from each module, and then add compiled manifest
+	gulp.src([config.modulesPath+'/sass/**.*', config.templatePath+'/sass/manifest.*'], {base: './'})
+	// This give us error handling, it fixes pipes
 	.pipe(plumber())
+	// Sass command with argument object
 	.pipe(sass({
 		errLogToConsole: true}
 	))
+	// Automatically generates vendor prefixes
 	.pipe(prefix('last 2 version', '> 1%', 'ie 8', 'ie 9'))
 	// .pipe(concat('style.css'))
-	.pipe(gulp.dest(config.templatePath + './css'));
+	.pipe(gulp.dest(config.templatePath + '/css'));
 })
+
+
 
 // Watch scss folder for changes
 gulp.task('watch', function() {
