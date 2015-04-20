@@ -21,7 +21,7 @@ var config = {
 	    "public/assets/bower_components/angular-ui/build/angular-ui.js",
 	    "public/assets/bower_components/angular-animate/angular-animate.js",
     	"public/themes/"+themeTemplate+"/assets/ng/angular-bonfire.js",
-    	"public/themes/"+themeTemplate+"/assets/ng/*.js",
+    	"public/themes/"+themeTemplate+"/assets/ng/**.js",
     	"application/modules/**/assets/ng/**.js",
 	]
 }
@@ -47,14 +47,11 @@ gulp.task('sass', function() {
 	.pipe(gulp.dest(config.templatePath + '/css'));
 })
 
+
 gulp.task('ng-bonfire', function() {
 	// accepts an array of paths, with a second argument being an object in which the base path is set
 	// currently set to include all files from each module, and then add compiled manifest
-	gulp.src([
-		config.templatePath+'/ng/**.**',
-		config.assetsPath+'/css/bootstrap.css',
-		config.modulesPath+'/ng/**.*' 
-		]
+	gulp.src(config.jsGlobOrder
 		// config.assetsPath+'/css/bootstrap.css',
 		, {base: './'})
 	// This give us error handling, it fixes pipes
