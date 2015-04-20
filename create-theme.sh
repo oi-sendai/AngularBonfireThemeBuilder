@@ -10,7 +10,8 @@ read module
 echo "Your module is called $module. ctrl-x to quit:"
 
 # create module controller
-mkdir -p application/modules/$module/controllers/$module.php
+mkdir -p application/modules/$module/controllers
+touch application/modules/$module/controllers/$module.php
 
 # create module js
 mkdir -p application/modules/$module/assets/ng
@@ -49,8 +50,8 @@ echo "!package.json" >> .gitignore
 
 read -p "Remove this installation script from project?" choice
 case "$choice" in 
-  y|Y ) echo "!create-theme.sh" >> .gitignore; ;;
-  n|N ) rm create-theme.sh && echo "removed file";;
+  y|Y ) rm create-theme.sh && echo "removed file";; 
+  n|N ) echo "!create-theme.sh" >> .gitignore; ;;
   * ) echo "invalid";;
 esac
 
@@ -68,7 +69,8 @@ echo '<script src="<?php echo js_path(); ?>angular-bonfire.js"></script>' >> pub
 # cpr -r application/config/application.php application/config/application.php.old
 # sed -i "s/template.default_theme'] = 'default/$config['template.default_theme'] = '$theme/g' application/config/application.php
 
-echo '$theme' | cat - gulpfile.js > temp && mv temp to gulpfile.js
+## update gulpfile with theme name
+sed -i "s/var themeTemplate = 'default'/var themeTemplate = '$theme'/g" gulpfile.js
 
 
 echo "your theme has now been installed. Run 'bower install && npm install && gulp' to start debugging your project"

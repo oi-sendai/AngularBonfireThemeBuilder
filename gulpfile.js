@@ -1,3 +1,6 @@
+// Set the Bonfire theme name
+var themeTemplate = 'test'
+
 // var requireDir = require('require-dir')
 var plumber = require('gulp-plumber')
 var gulp = require('gulp')
@@ -7,8 +10,6 @@ var gulp = require('gulp')
 ,   concat = require('gulp-concat')
 ,   order = require('gulp-order')
 
-// Set the Bonfire theme name
-var themeTemplate = 'default'
 
 // set up default routing for AngularBonfire
 var config = {
@@ -19,9 +20,9 @@ var config = {
 	    "public/assets/bower_components/angular/angular.js",
 	    "public/assets/bower_components/angular-ui/build/angular-ui.js",
 	    "public/assets/bower_components/angular-animate/angular-animate.js",
-    	"public/themes/template/ng/angular-bonfire.js",
-    	"public/themes/"+themeTemplate+"/template/ng/*.js",
-    	"application/modules/**/ng/**.js",
+    	"public/themes/"+themeTemplate+"/assets/ng/angular-bonfire.js",
+    	"public/themes/"+themeTemplate+"/assets/ng/*.js",
+    	"application/modules/**/assets/ng/**.js",
 	]
 }
 // Require all tasks in gulp/tasks, including subfolders
