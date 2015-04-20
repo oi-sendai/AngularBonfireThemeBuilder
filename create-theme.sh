@@ -9,6 +9,9 @@ echo "module name:"
 read module
 echo "Your module is called $module. ctrl-x to quit:"
 
+# create module controller
+mkdir -p application/modules/$module/controllers/$module.php
+
 # create module js
 mkdir -p application/modules/$module/assets/ng
 echo "console.log(your module js)" > application/modules/$module/assets/ng/$module.js
@@ -27,9 +30,6 @@ mkdir -p public/themes/$theme/assets/sass
 echo "@import 'partial'" >> public/themes/$theme/assets/sass/manifest.scss
 echo ".angularbonfire {colorL:#778899;} /* build complete */" >> public/themes/$theme/assets/sass/_partial.scss
 
-
-
-
 ## add theme and module to existing bonfire .gitignore
 echo "# AngularBonfire ignores" > .gitignore
 echo "node_modules" >> .gitignore
@@ -40,7 +40,7 @@ echo "public/assets/bower_components" >> .gitignore
 
 echo "# AngularBonfire includes" >> .gitignore
 echo "!public/themes/angular-bonfire/*" >> .gitignore
-echo "!application/modules/yourmodulezxas/yourapp/*" >> .gitignore
+echo "!application/modules/$module/*" >> .gitignore
 
 echo "!gulpfile.js"
 echo "!bower.json"
@@ -53,10 +53,23 @@ case "$choice" in
   * ) echo "invalid";;
 esac
 
+## create a placeholder header with css 
+echo '<link href="<?php echo base_url(); ?>/css/angular-bonfire.css">' >> public/themes/$theme/header.php
+## create a placeholder footer with js
+echo '<script src="<?php echo js_path(); ?>angular-bonfire.js"></script>' >> public/themes/$theme/footer.php
+
+# read -p "Set $theme as the current option application/config/application.php ?" choice
+# case "$choice" in 
+  # y|Y ) echo "!create-theme.sh" && add theme to ; ;;
+  # n|N ) rm create-theme.sh && echo "removed file";;
+  # * ) echo "invalid";;
+# esac
+# cpr -r application/config/application.php application/config/application.php.old
+# sed -i "s/template.default_theme'] = 'default/$config['template.default_theme'] = '$theme/g' application/config/application.php
+
+
 echo "your theme has now been installed. Run 'bower install && npm install && gulp' to start debugging your project"
 
-echo "if you fail to read this line you might get a little confused, however we taken (assuming your project used the defaul) the liberty"
-cpr -r application/config/application.php application/config/application.php
-# the -i flag tells sed to not operate in stream and overright instead
-sed -i 's/"$config['template.default_theme'] = 'default"/"$config['template.default_theme'] = '$theme"/g' application/config/application.php
-echo "of changing the application/config/application.php entry $config['template.default_theme'] = 'yourtheme/'"
+echo "and change"
+echo "application/config/application.php to show $config['template.default_theme'] = '$theme'" 
+echo "to start using your new theme"
