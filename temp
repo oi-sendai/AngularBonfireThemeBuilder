@@ -1,33 +1,29 @@
+var themeTemplate = 'theme'
+// Set the Bonfire theme name
+// var themeTemplate = 'default'
+
+// var requireDir = require('require-dir')
+var plumber = require('gulp-plumber')
 var gulp = require('gulp')
-,   plumber = require('gulp-plumber')
 ,   sass = require('gulp-sass')
 ,   sourcemaps = require('gulp-sourcemaps')
 ,   prefix = require('gulp-autoprefixer')
 ,   concat = require('gulp-concat')
 ,   order = require('gulp-order')
 
-// Set the Bonfire theme name
-var themeTemplate = 'test'
 
-var path = {
-	template : 'public/themes/'+themeTemplate+'/assets',
-	assets   : 'public/assets/bower_components',
-	modules  : 'application/modules/**/assets'
-}
 // set up default routing for AngularBonfire
 var config = {
-	jsGlobOrder: [ // You can add your own dependancies here as you build out your app
-	    path.assets  +"/angular/angular.js",
-	    path.assets  +"/angular-ui/build/angular-ui.js",
-	    path.assets  +"/angular-animate/angular-animate.js",
-    	path.template+"/ng/angular-bonfire.js",
-    	path.template+"/ng/**.js",
-    	path.modules +"/ng/**.js",
-	],
-	sassGlobOrder: [
-		// path.assets  +'/bootstrap-sass-official/assets/stylesheets/bootstrap.scss',
-		path.modules +'/sass/**.*', 
-		path.template+'/sass/manifest.*'
+	templatePath : './public/themes/'+themeTemplate+'/assets',
+	assetsPath   : './public/assets/bower_components',
+	modulesPath  : './application/modules/**/assets',
+	jsGlobOrder  : [ // You can add your own dependancies here as you build out your app
+	    "public/assets/bower_components/angular/angular.js",
+	    "public/assets/bower_components/angular-ui/build/angular-ui.js",
+	    "public/assets/bower_components/angular-animate/angular-animate.js",
+    	"public/themes/template/ng/angular-bonfire.js",
+    	"public/themes/"+themeTemplate+"/template/ng/*.js",
+    	"application/modules/**/ng/**.js",
 	]
 }
 // Require all tasks in gulp/tasks, including subfolders
@@ -36,7 +32,10 @@ var config = {
 gulp.task('sass', function() {
 	// accepts an array of paths, with a second argument being an object in which the base path is set
 	// currently set to include all files from each module, and then add compiled manifest
-	gulp.src(config.sassGlobOrder, {base: './'})
+	gulp.src([
+		config.modulesPath+'/sass/**.*', 
+		// config.assetsPath+'/css/bootstrap.css',
+		config.templatePath+'/sass/manifest.*'], {base: './'})
 	// This give us error handling, it fixes pipes
 	.pipe(plumber())
 	// Sass command with argument object
@@ -49,11 +48,16 @@ gulp.task('sass', function() {
 	.pipe(gulp.dest(config.templatePath + '/css'));
 })
 
-
 gulp.task('ng-bonfire', function() {
 	// accepts an array of paths, with a second argument being an object in which the base path is set
 	// currently set to include all files from each module, and then add compiled manifest
-	gulp.src(config.jsGlobOrder, {base: './'})
+	gulp.src([
+		config.templatePath+'/ng/**.**',
+		config.assetsPath+'/css/bootstrap.css',
+		config.modulesPath+'/ng/**.*' 
+		]
+		// config.assetsPath+'/css/bootstrap.css',
+		, {base: './'})
 	// This give us error handling, it fixes pipes
 	.pipe(plumber())
 	// Stops gulp from ordering them alphabetically
@@ -67,9 +71,9 @@ gulp.task('ng-bonfire', function() {
 gulp.task('watch', function() {
   // Watches the sass folders for all .scss and .sass files
   // If any file changes, run the sass task
-  gulp.watch([path.modules+'/sass/**.*', path.template+'/sass/**.*'], ['sass'])
+  gulp.watch([config.modulesPath+'/sass/**.*', config.templatePath+'/sass/**.*'], ['sass'])
   // If any file changes, run the ng-bonfire task
-  gulp.watch([path.modules+'/ng/**.*', path.template+'/ng/**.*'], ['ng-bonfire'])
+  gulp.watch([config.modulesPath+'/ng/**.*', config.templatePath+'/ng/**.*'], ['ng-bonfire'])
 })
 
 // Creating a default task

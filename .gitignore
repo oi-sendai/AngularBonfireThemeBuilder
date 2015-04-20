@@ -4,4 +4,7 @@ public/assets/bower_components
 npm-debug.log
 # AngularBonfire includes
 !public/themes/angular-bonfire/*
-!application/modules/blazy/*
+!application/modules/testing/*
+!gulpfile.js
+!bower.json
+!package.json

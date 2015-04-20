@@ -28,7 +28,7 @@ echo "console.log('your theme js)" >> public/themes/$theme/assets/ng/$theme.js
 
 # create the theme sass files
 mkdir -p public/themes/$theme/assets/sass
-echo "@import 'partial'" >> public/themes/$theme/assets/sass/manifest.scss
+echo "@import 'partial';" >> public/themes/$theme/assets/sass/manifest.scss
 echo ".angularbonfire {colorL:#778899;} /* build complete */" >> public/themes/$theme/assets/sass/_partial.scss
 
 ## add theme and module to existing bonfire .gitignore

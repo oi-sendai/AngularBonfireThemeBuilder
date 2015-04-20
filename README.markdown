@@ -35,6 +35,10 @@ In /application/config/application.php:
 $config['template.default_theme'] = 'yourtheme/';
 ```
 
+##TODO
+
+- Bootstrap Angular Support
+
 
 
 
