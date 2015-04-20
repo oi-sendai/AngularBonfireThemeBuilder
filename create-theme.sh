@@ -43,13 +43,13 @@ echo "# AngularBonfire includes" >> .gitignore
 echo "!public/themes/angular-bonfire/*" >> .gitignore
 echo "!application/modules/$module/*" >> .gitignore
 
-echo "!gulpfile.js"
-echo "!bower.json"
-echo "!package.json"
+echo "!gulpfile.js" >> .gitignore
+echo "!bower.json" >> .gitignore
+echo "!package.json" >> .gitignore
 
 read -p "Remove this installation script from project?" choice
 case "$choice" in 
-  y|Y ) echo "!create-theme.sh" && add theme to ; ;;
+  y|Y ) echo "!create-theme.sh" >> .gitignore; ;;
   n|N ) rm create-theme.sh && echo "removed file";;
   * ) echo "invalid";;
 esac
@@ -67,6 +67,8 @@ echo '<script src="<?php echo js_path(); ?>angular-bonfire.js"></script>' >> pub
 # esac
 # cpr -r application/config/application.php application/config/application.php.old
 # sed -i "s/template.default_theme'] = 'default/$config['template.default_theme'] = '$theme/g' application/config/application.php
+
+echo '$theme' | cat - gulpfile.js > temp && mv temp to gulpfile.js
 
 
 echo "your theme has now been installed. Run 'bower install && npm install && gulp' to start debugging your project"

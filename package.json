@@ -3,9 +3,6 @@
   "version": "0.0.0",
   "description": "AngularBonfire build process",
   "main": "index.js",
-  "scripts": {
-    // "test": 'echo "error: no test specified" && exit 1'
-  },
   "author": "Andrew MacKay",
   "license": "BSD-2-Clause",
   "devDependencies": {

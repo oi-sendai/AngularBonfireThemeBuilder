@@ -20,7 +20,7 @@ var config = {
 	    "public/assets/bower_components/angular-ui/build/angular-ui.js",
 	    "public/assets/bower_components/angular-animate/angular-animate.js",
     	"public/themes/template/ng/angular-bonfire.js",
-    	"public/themes/"+themeTemplate+"/template/ng/*.js"
+    	"public/themes/"+themeTemplate+"/template/ng/*.js",
     	"application/modules/**/ng/**.js",
 	]
 }

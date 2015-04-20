@@ -1,0 +1,28 @@
+{{
+  "name": "AngularBonfire",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.4",
+    "fontawesome": "~4.3.0"
+  }
+}
+
+  "name": "gulpbegin",
+  "version": "0.0.0",
+  "authors": [
+    "oi-sendai <binarygeometry@gmail.com>"
+  ],
+  "description": "Susy Starter that uses LibSass with Gulp\"",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "susy": "~2.2.2",
+    "breakpoint-sass": "~2.5.0"
+  }
+}
