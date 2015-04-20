@@ -15,11 +15,13 @@ var config = {
 	templatePath : './public/themes/'+themeTemplate+'/assets',
 	assetsPath   : './public/assets/bower_components',
 	modulesPath  : './application/modules/**/assets',
-	jsGlobOrder  : [
-    	"application/modules/**/ng/**.js",
+	jsGlobOrder  : [ // You can add your own dependancies here as you build out your app
+	    "public/assets/bower_components/angular/angular.js",
+	    "public/assets/bower_components/angular-ui/build/angular-ui.js",
+	    "public/assets/bower_components/angular-animate/angular-animate.js",
     	"public/themes/template/ng/angular-bonfire.js",
-	    // "public/assets/bower_components/**.*",
     	"public/themes/"+themeTemplate+"/template/ng/*.js"
+    	"application/modules/**/ng/**.js",
 	]
 }
 // Require all tasks in gulp/tasks, including subfolders

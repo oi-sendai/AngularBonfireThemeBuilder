@@ -34,6 +34,7 @@ echo ".angularbonfire {colorL:#778899;} /* build complete */" >> public/themes/$
 echo "# AngularBonfire ignores" > .gitignore
 echo "node_modules" >> .gitignore
 echo "public/assets/bower_components" >> .gitignore
+echo "npm-debug.log" >> .gitignore
 #echo "## discussion point / qa want production environment, marketing want it shipped" >> .gitignore
 #echo "public/themes/angular-bonfire/assets/css/*" >> .gitignore
 #echo "public/themes/angular-bonfire/assets/js" >> .gitignore

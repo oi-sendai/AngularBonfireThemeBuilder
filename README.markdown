@@ -18,9 +18,8 @@ npm install -g gulp bower sass
 sudo !!
 ```
 
-The program will ask you for the name of your theme and first module, build out the required folder structure.
+The program will build out your theme structure and include a boilerplate header and footer with the css and js paths
 
-All you need to do is then include in your header.php file
 ```
 <link href="<?php echo base_url(); ?>/css/angular-bonfire.css">
 ```
@@ -36,10 +35,6 @@ In /application/config/application.php:
 $config['template.default_theme'] = 'yourtheme/';
 ```
 
-
-##Todo
--Add native Bonfire: Modernizer support
--Automatically update /application/config/application.php 
 
 
 
