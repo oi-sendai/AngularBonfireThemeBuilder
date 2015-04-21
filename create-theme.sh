@@ -22,14 +22,14 @@ mkdir -p application/modules/$module/assets/sass
 echo ".your-module h1 { transform: translate(50px,100px);} " >> application/modules/$module/assets/sass/$module.scss
 
 # create the theme js files
-mkdir -p public/themes/$theme/assets/ng
-echo "console.log('angular-bonfire.js)" >> public/themes/$theme/assets/ng/angular-bonfire.js
-echo "console.log('your theme js)" >> public/themes/$theme/assets/ng/$theme.js
+mkdir -p public/themes/$theme/ng
+echo "console.log('angular-bonfire.js)" >> public/themes/$theme/ng/angular-bonfire.js
+echo "console.log('your theme js)" >> public/themes/$theme/ng/$theme.js
 
 # create the theme sass files
-mkdir -p public/themes/$theme/assets/sass
-echo "@import 'partial';" >> public/themes/$theme/assets/sass/manifest.scss
-echo ".angularbonfire {colorL:#778899;} /* build complete */" >> public/themes/$theme/assets/sass/_partial.scss
+mkdir -p public/themes/$theme/sass
+echo "@import 'partial';" >> public/themes/$theme/sass/manifest.scss
+echo ".angularbonfire {colorL:#778899;} /* build complete */" >> public/themes/$theme/sass/_partial.scss
 
 ## add theme and module to existing bonfire .gitignore
 echo "# AngularBonfire ignores" > .gitignore

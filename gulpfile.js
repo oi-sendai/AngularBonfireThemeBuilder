@@ -25,11 +25,11 @@ var config = {
     	path.modules +"/ng/**.js",
 	],
 	sassGlobOrder: [
-		// path.assets  +'/bootstrap-sass-official/assets/stylesheets/bootstrap.scss',
 		path.modules +'/sass/**.*', 
 		path.template+'/sass/manifest.*'
 	]
 }
+		// './'+path.assets  +'/bootstrap-sass-official/assets/stylesheets/**.*',
 // Require all tasks in gulp/tasks, including subfolders
 // requireDir('gulp/tasks', { recurse: true })
 
